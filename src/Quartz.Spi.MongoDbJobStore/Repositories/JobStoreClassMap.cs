@@ -11,10 +11,10 @@ namespace Quartz.Spi.MongoDbJobStore.Repositories
 {
     internal static class JobStoreClassMap
     {
-        public static void RegisterClassMaps()
+        public static void RegisterClassMaps(IBsonSerializer<JobDataMap> bsonSerializer)
         {
             BsonSerializer.RegisterGenericSerializerDefinition(typeof (ISet<>), typeof (SetSerializer<>));
-            BsonSerializer.RegisterSerializer(new JobDataMapSerializer());
+            BsonSerializer.RegisterSerializer(bsonSerializer??new JobDataMapSerializer());
 
             BsonClassMap.RegisterClassMap<Key<JobKey>>(map =>
             {

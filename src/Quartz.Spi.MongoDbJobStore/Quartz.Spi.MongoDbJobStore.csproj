@@ -13,6 +13,7 @@ Change Comon.Log to MS Log</PackageReleaseNotes>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>MSLog.$(AssemblyName)</PackageId>
     <RepositoryUrl>https://github.com/Cricle/mongodb-quartz-net</RepositoryUrl>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

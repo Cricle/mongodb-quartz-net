@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
+using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 using Quartz.Impl.AdoJobStore;
 using Quartz.Impl.Matchers;
@@ -41,9 +42,9 @@ namespace Quartz.Spi.MongoDbJobStore
         private ISchedulerSignaler _schedulerSignaler;
         private TriggerRepository _triggerRepository;
 
-        static MongoDbJobStore()
+        public static void Init(IBsonSerializer<JobDataMap> bsonSerializer) 
         {
-            JobStoreClassMap.RegisterClassMaps();
+            JobStoreClassMap.RegisterClassMaps(bsonSerializer);
         }
 
         public MongoDbJobStore()
